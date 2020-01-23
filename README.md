@@ -1,5 +1,4 @@
-# Bracket
-### by Tyler Dakin
+![Bracket](banner.png)
 
 ##### As of writing this I do not have plans to do a full write-up on this program.
 
