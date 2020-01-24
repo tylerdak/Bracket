@@ -3,6 +3,7 @@ from tkinter.filedialog import askopenfilename
 import csv
 from isInt import isInt
 from random import *
+from datetime import datetime
 
 
 Tk().withdraw()
@@ -95,7 +96,33 @@ while (not len(itemList) == int(winnerNum)):
         itemList.remove(item)
 
 
-
+print()
+print()
 print("The winners have been chosen!")
+print()
+print()
 for winner in itemList:
     print(winner)
+print()
+if int(winnerNum) > 1:
+    savingYN = "_"
+    acceptableYN = ["Y","N","YES","NO","YEAH","NAH"]
+    print("Would you like to save the list of winners?")
+    while not (savingYN.upper() in acceptableYN):
+        print("[Y/N]: ",end="")
+        savingYN = input()
+
+    if "Y" in savingYN.upper():
+        print("Saving...")
+        now = datetime.now()
+        name = now.strftime("BKT - %Y-%m-%d - %H:%M:%S")
+
+        with open(str(name) + ".csv","w", newline='') as f:
+            writer = csv.writer(f)
+            for i in itemList:
+                writer.writerow([i])
+
+        print("Items saved to " + name + ".csv")
+
+    elif "N" in savingYN.upper():
+        print("\nThanks for using Bracket by Tyler Dakin")
